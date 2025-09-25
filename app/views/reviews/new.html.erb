@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <h1>Leave a Review</h1>
+
+  <%= form_with model: @review, local: true do |f| %>
+    <% if @review.errors.any? %>
+      <div class="alert alert-danger">
+        <h4>Errors:</h4>
+        <ul>
+          <% @review.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-3">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :email %>
+      <%= f.email_field :email, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :rating %>
+      <%= f.number_field :rating, class: "form-control", in: 1..5 %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :content, "Review" %>
+      <%= f.text_area :content, class: "form-control", rows: 5 %>
+    </div>
+
+    <%= f.submit "Submit Review", class: "btn btn-primary" %>
+  <% end %>
+</div>

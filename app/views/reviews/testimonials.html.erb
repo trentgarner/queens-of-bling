@@ -1,0 +1,12 @@
+<div class="container mt-5">
+  <h1>Testimonials</h1>
+
+  <% @reviews.each do |review| %>
+    <div class="card mb-3 border-success">
+      <div class="card-body">
+        <h5 class="card-title"><%= review.name %> <small>(⭐ <%= review.rating %>)</small></h5>
+        <p class="card-text"><%= review.content %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
