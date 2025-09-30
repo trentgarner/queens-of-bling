@@ -141,13 +141,16 @@
     <div class="container position-relative zindex-5 py-sm-4 py-lg-5 mt-4">
       <div class="row pt-lg-2 py-xl-4 py-xxl-5 mb-md-4 mb-lg-5">
         <div class="col-md-10 col-lg-9 col-xl-8 col-xxl-7 pt-5 mb-5">
-          <h1 class="display-2 text-light text-uppercase pb-sm-2 pb-md-3">Decor to create comfort at home</h1>
-          <p class="text-light opacity-70 pb-3 pb-md-4 mb-3" style="max-width: 520px;">On the site you will find all the wonderful decor items from photo frames to tablecloths for the dining table</p>
-          <a class="btn btn-outline-light" href="shop-catalog.html">Explore the catalog</a>
+          <h1 class="display-2 text-light text-uppercase pb-sm-2 pb-md-3">Custom rhinestone apparel for every spotlight</h1>
+          <p class="text-light opacity-75 pb-3 pb-md-4 mb-3" style="max-width: 560px;">Kidd Custom Apparel partners with dance teams, creators, and live events to design, embellish, and deliver unforgettable looks—on time and ready to perform.</p>
+          <div class="d-flex flex-wrap gap-3">
+            <%= link_to 'Start a project', new_inquiry_path, class: 'btn btn-light text-dark' %>
+            <%= link_to 'View our portfolio', gallery_path, class: 'btn btn-outline-light' %>
+          </div>
         </div>
       </div>
       <div class="d-flex align-items-center justify-content-between mb-3">
-        <div class="fw-medium text-light text-uppercase">Most Popular</div>
+        <div class="fw-medium text-light text-uppercase">Signature drops</div>
         <div class="d-flex">
           <button class="btn btn-prev btn-icon btn-sm btn-outline-light rounded-circle ms-3" type="button" id="popular-prev"><i class="ai-arrow-left"></i></button>
           <button class="btn btn-next btn-icon btn-sm btn-outline-light rounded-circle ms-3" type="button" id="popular-next"><i class="ai-arrow-right"></i></button>
@@ -156,24 +159,24 @@
       <div class="swiper" data-swiper-options='{"slidesPerView":1,"spaceBetween":24,"loop":true,"navigation":{"prevEl":"#popular-prev","nextEl":"#popular-next"},"breakpoints":{"500":{"slidesPerView":2},"860":{"slidesPerView":3},"1200":{"slidesPerView":4}}}'>
         <div class="swiper-wrapper">
           <% [
-            {image: 'theme/landing/shop/hero/01.png', title: 'Exquisite glass vase', price: '$19.00'},
-            {image: 'theme/landing/shop/hero/02.png', title: 'Pot for home flowers', price: "$11.00 <del class='text-muted fs-xs'>$15.00</del>"},
-            {image: 'theme/landing/shop/hero/03.png', title: 'Ceramic soap dispenser', price: '$16.00'},
-            {image: 'theme/landing/shop/hero/04.png', title: 'Wooden clock with metal hands', price: '$24.00'},
-            {image: 'theme/landing/shop/hero/05.png', title: 'Scented candle in ceramic shell', price: '$13.00'}
+            {image: 'theme/landing/shop/hero/01.png', title: 'Crystal varsity crew', tagline: 'Made-to-order sets starting at 50 pieces'},
+            {image: 'theme/landing/shop/hero/02.png', title: 'Glow tour bomber', tagline: 'Reflective accents for stage-ready shine'},
+            {image: 'theme/landing/shop/hero/03.png', title: 'Studio essentials kit', tagline: 'Moisture-wicking staples with rhinestone crest'},
+            {image: 'theme/landing/shop/hero/04.png', title: 'Merch table showstopper', tagline: 'Custom typography and metallic foils'},
+            {image: 'theme/landing/shop/hero/05.png', title: 'Influencer launch bundle', tagline: 'Curated looks, premium packaging, zero stress'}
           ].each do |item| %>
             <div class="swiper-slide h-auto">
-              <a class="card h-100 border-0 rounded-1 text-decoration-none px-xxl-1" href="shop-single.html">
+              <div class="card h-100 border-0 rounded-1 text-decoration-none px-xxl-1">
                 <div class="card-body p-4 px-sm-3 px-md-4">
                   <div class="d-flex align-items-center">
                     <%= image_tag item[:image], width: 97, alt: item[:title] %>
                     <div class="ps-3 ps-md-4">
-                      <h3 class="fs-sm mb-2"><%= item[:title] %></h3>
-                      <p class="fs-sm mb-0"><%= item[:price].html_safe %></p>
+                      <h3 class="fs-sm mb-2 text-uppercase text-light"><%= item[:title] %></h3>
+                      <p class="fs-sm mb-0 text-light opacity-70"><%= item[:tagline] %></p>
                     </div>
                   </div>
                 </div>
-              </a>
+              </div>
             </div>
           <% end %>
         </div>
@@ -181,20 +184,21 @@
     </div>
   </div>
 </section>
-
 <%# About %>
 <section class="container py-5 my-lg-3 my-xl-4 my-xxl-5">
   <div class="row pt-2 py-md-4">
     <div class="col-lg-10 col-xl-9">
-      <p class="lead text-dark pb-md-2 pb-lg-3 mb-2">We do not believe that one style suits everyone. That is why we choose three design directions for the new season. Get inspired by new trends and create an atmosphere of coziness and comfort in your own home. On the site you will find all the wonderful decor items from photo frames to tablecloths for the dining table.</p>
-      <a class="btn btn-lg btn-link px-0" href="#">About us<i class="ai-arrow-right ms-2"></i></a>
+      <p class="lead text-dark pb-md-2 pb-lg-3 mb-2">Kidd Custom Apparel fuses choreography-ready comfort with showstopping sparkle. From design direction and blank sourcing to embellishment, QC, and fulfillment—we’re the partners who sweat every detail so your crew can shine.</p>
+      <%= link_to about_path, class: 'btn btn-lg btn-link px-0 d-inline-flex align-items-center gap-2' do %>
+        Learn more about us<i class="ai-arrow-right"></i>
+      <% end %>
     </div>
   </div>
 </section>
 
 <%# Categories %>
 <section class="container mt-n3 mt-sm-0 pb-5 mb-1 mb-sm-2 mb-lg-3 mb-xl-4 mb-xxl-5">
-  <h2 class="h1 pb-3 mb-lg-4">Categories</h2>
+  <h2 class="h1 pb-3 mb-lg-4">What we create</h2>
   <div class="row g-4 pb-2 pb-md-4">
     <div class="col-md-4">
       <div class="card zoom-effect h-100 border-0 rounded-1 overflow-hidden" style="min-height: 320px;">
@@ -202,8 +206,8 @@
         <div class="zoom-effect-wrapper rounded-1 position-absolute top-0 start-0 w-100 h-100">
           <div class="zoom-effect-img bg-size-cover bg-position-bottom-center position-absolute top-0 start-0 w-100 h-100" style="background-image: url(<%= asset_path('theme/shop/categories/01.jpg') %>);"></div>
         </div>
-        <a class="card-body d-flex flex-column justify-content-end align-items-start position-absolute top-0 start-0 w-100 h-100 text-decoration-none zindex-3" href="shop-catalog.html">
-          <span class="bg-light text-dark rounded-pill fs-sm fw-semibold lh-1 py-3 px-4">For the living room</span>
+        <a class="card-body d-flex flex-column justify-content-end align-items-start position-absolute top-0 start-0 w-100 h-100 text-decoration-none zindex-3" href="<%= new_inquiry_path %>">
+          <span class="bg-light text-dark rounded-pill fs-sm fw-semibold lh-1 py-3 px-4">Teams &amp; crews</span>
         </a>
       </div>
     </div>
@@ -211,20 +215,20 @@
       <div class="card zoom-effect border-0 rounded-1 overflow-hidden">
         <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-10 zindex-2"></span>
         <div class="zoom-effect-wrapper rounded-1"><%= image_tag 'theme/shop/categories/02.jpg', alt: 'Category image', class: 'zoom-effect-img' %></div>
-        <a class="card-body d-flex flex-column justify-content-end align-items-start position-absolute top-0 start-0 w-100 h-100 text-decoration-none zindex-3" href="shop-catalog.html">
-          <span class="bg-light text-dark rounded-pill fs-sm fw-semibold lh-1 py-3 px-4">For the kitchen</span>
+        <a class="card-body d-flex flex-column justify-content-end align-items-start position-absolute top-0 start-0 w-100 h-100 text-decoration-none zindex-3" href="<%= gallery_path %>">
+          <span class="bg-light text-dark rounded-pill fs-sm fw-semibold lh-1 py-3 px-4">Brands &amp; creators</span>
         </a>
       </div>
       <div class="row g-4 pt-4">
         <% [
-          {image: 'theme/shop/categories/03.jpg', label: 'For the bathroom'},
-          {image: 'theme/shop/categories/04.jpg', label: 'For the bedroom'}
+          {image: 'theme/shop/categories/03.jpg', label: 'Corporate &amp; VIP gifting'},
+          {image: 'theme/shop/categories/04.jpg', label: 'Experiential pop-ups'}
         ].each do |category| %>
           <div class="col-sm-6">
             <div class="card zoom-effect border-0 rounded-1 overflow-hidden">
               <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-10 zindex-2"></span>
               <div class="zoom-effect-wrapper rounded-1"><%= image_tag category[:image], alt: 'Category image', class: 'zoom-effect-img' %></div>
-              <a class="card-body d-flex flex-column justify-content-end align-items-start position-absolute top-0 start-0 w-100 h-100 text-decoration-none zindex-3" href="shop-catalog.html">
+              <a class="card-body d-flex flex-column justify-content-end align-items-start position-absolute top-0 start-0 w-100 h-100 text-decoration-none zindex-3" href="<%= new_inquiry_path %>">
                 <span class="bg-light text-dark rounded-pill fs-sm fw-semibold lh-1 py-3 px-4"><%= category[:label] %></span>
               </a>
             </div>
