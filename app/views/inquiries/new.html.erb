@@ -1,38 +1,87 @@
-<div class="container mt-5">
-  <h1>Team inquiry/Order</h1>
-  <%= form_with inquiry: @inquiry, local: true do |f| %>
-    <div class="mb-3">
-      <%= f.label :name %>
-      <%= f.text_field :name, class: "form-control" %>
+<% content_for :title, "Project Inquiry" %>
+
+<section class="bg-dark position-relative py-5">
+  <div class="d-none d-dark-mode-block position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(255,255,255, .02);"></div>
+  <div class="container position-relative zindex-2 py-5">
+    <div class="row align-items-end">
+      <div class="col-lg-8">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-3 text-light">
+            <li class="breadcrumb-item"><%= link_to "Home", root_path, class: 'text-decoration-none' %></li>
+            <li class="breadcrumb-item active" aria-current="page">Project inquiry</li>
+          </ol>
+        </nav>
+        <h1 class="display-4 text-white">Let’s bring your merch vision to life</h1>
+        <p class="fs-lg text-white-50 mb-4">Tell us about your team, timeline, and the experience you want to create—we will handle the rest.</p>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <%= link_to 'View recent work', gallery_path, class: 'btn btn-lg btn-outline-light' %>
+      </div>
     </div>
-    <div class="mb-3">
-      <%= f.label :email %>
-      <%= f.email_field :email, class: "form-control" %>
+  </div>
+</section>
+
+<section class="py-5 py-lg-6">
+  <div class="container py-3 py-lg-5">
+    <div class="row g-5">
+      <div class="col-lg-7">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4 p-lg-5">
+            <h2 class="h3 mb-4">Tell us about your project</h2>
+            <%= form_with model: @inquiry, local: true, html: { class: 'row g-4 needs-validation', novalidate: true } do |f| %>
+              <div class="col-md-6">
+                <%= f.label :name, class: 'form-label fs-base' %>
+                <%= f.text_field :name, class: 'form-control form-control-lg', required: true, placeholder: 'Full name' %>
+              </div>
+              <div class="col-md-6">
+                <%= f.label :email, class: 'form-label fs-base' %>
+                <%= f.email_field :email, class: 'form-control form-control-lg', required: true, placeholder: 'you@example.com' %>
+              </div>
+              <div class="col-md-6">
+                <%= f.label :phone, class: 'form-label fs-base' %>
+                <%= f.telephone_field :phone, class: 'form-control form-control-lg', placeholder: '(555) 123-4567' %>
+              </div>
+              <div class="col-md-6">
+                <%= f.label :business_name, 'Organization or team', class: 'form-label fs-base' %>
+                <%= f.text_field :business_name, class: 'form-control form-control-lg', placeholder: 'School, studio, brand…' %>
+              </div>
+              <div class="col-md-6">
+                <%= f.label :quantity, 'Estimated quantity', class: 'form-label fs-base' %>
+                <%= f.number_field :quantity, class: 'form-control form-control-lg', min: 1, placeholder: '50' %>
+              </div>
+              <div class="col-md-6">
+                <%= f.label :date_needed, class: 'form-label fs-base' %>
+                <%= f.date_field :date_needed, class: 'form-control form-control-lg' %>
+              </div>
+              <div class="col-12">
+                <%= f.label :apparel_type, 'Product or apparel type', class: 'form-label fs-base' %>
+                <%= f.text_field :apparel_type, class: 'form-control form-control-lg', placeholder: 'Tees, jackets, hats…' %>
+              </div>
+              <div class="col-12">
+                <%= f.label :questions, 'Anything else we should know?', class: 'form-label fs-base' %>
+                <%= f.text_area :questions, class: 'form-control form-control-lg', rows: 4, placeholder: 'Design direction, budget, special requests…' %>
+              </div>
+              <div class="col-12 pt-2">
+                <%= f.submit 'Send request', class: 'btn btn-lg btn-primary' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="ps-lg-4">
+          <h2 class="h4 mb-4">Prefer to talk it through?</h2>
+          <ul class="list-unstyled mb-4">
+            <li class="d-flex mb-3"><i class="ai-phone text-primary me-2"></i><a class="nav-link p-0" href="tel:+17205551234">+1 (720) 555-1234</a></li>
+            <li class="d-flex mb-3"><i class="ai-mail text-primary me-2"></i><%= mail_to 'projects@queensofbling.com', 'projects@queensofbling.com', class: 'nav-link p-0' %></li>
+            <li class="d-flex"><i class="ai-map-pin text-primary me-2"></i><span>Denver, CO · Serving crews nationwide</span></li>
+          </ul>
+          <div class="ratio ratio-4x3 rounded-4 overflow-hidden shadow-sm">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3067.90205569039!2d-104.9915317846237!3d39.73923637944814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c78d61f4b6cbf%3A0x77d5c79ad3f271a4!2sDenver%2C%20CO!5e0!3m2!1sen!2sus!4v1700000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <p class="text-muted mt-3">Studio visits are by appointment—reach out and we’ll schedule time to walk you through fabrics, finishes, and past work.</p>
+        </div>
+      </div>
     </div>
-    <div class="mb-3">
-      <%= f.label :phone %>
-      <%= f.telephone_field :phone, class: "form-control" %>
-    </div>
-    <div class="mb-3">
-      <%= f.label :Business_name %>
-      <%= f.text_field :business_name, class: "form-control" %>
-    </div>
-    <div class="mb-3">
-      <%= f.label :Quantity %>
-      <%= f.number_field :Quantity, class: "form-control" %>
-    </div>
-    <div class="mb-3">
-      <%= f.label :date_needed %>
-      <%= f.date_field :date_needed, class: "form-control" %>
-    </div>
-    <div class="mb-3">
-      <%= f.label :apparel_type %>
-      <%= f.text_field :apparel_type, class: "form-control" %>
-    </div>
-    <div class="mb-3">
-      <%= f.label :questions %>
-      <%= f.text_field :questions, class: "form-control" %>
-    </div>
-    <%= f.submit "Submit", class: "btn btn-primary" %>
-  <% end %>
-</div>
+  </div>
+</section>

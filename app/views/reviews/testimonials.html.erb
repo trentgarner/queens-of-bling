@@ -1,12 +1,106 @@
-<div class="container mt-5">
-  <h1>Testimonials</h1>
+<% content_for :title, "Testimonials" %>
 
-  <% @reviews.each do |review| %>
-    <div class="card mb-3 border-success">
-      <div class="card-body">
-        <h5 class="card-title"><%= review.name %> <small>(⭐ <%= review.rating %>)</small></h5>
-        <p class="card-text"><%= review.content %></p>
+<section class="bg-dark position-relative py-5">
+  <div class="d-none d-dark-mode-block position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(255,255,255, .02);"></div>
+  <div class="container position-relative zindex-2 py-5">
+    <div class="row align-items-end">
+      <div class="col-lg-8">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-3 text-light">
+            <li class="breadcrumb-item"><%= link_to "Home", root_path, class: 'text-decoration-none' %></li>
+            <li class="breadcrumb-item active" aria-current="page">Testimonials</li>
+          </ol>
+        </nav>
+        <h1 class="display-4 text-white">Brands that trust Queens of Bling</h1>
+        <p class="fs-lg text-white-50 mb-4">Stories from teams we have helped dress, launch, and celebrate.</p>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <%= link_to 'Share your experience', new_review_path, class: 'btn btn-lg btn-primary' %>
       </div>
     </div>
-  <% end %>
-</div>
+  </div>
+</section>
+
+<section class="container py-5 py-lg-6">
+  <div class="row g-4">
+    <% [
+      {icon: 'ai-star', title: 'Production expertise', text: 'From blanks to rhinestones, our team knows which materials withstand the spotlight.'},
+      {icon: 'ai-clock', title: 'On-time delivery', text: 'Tight timeline? We bundle design, embellishment, and fulfillment under one roof.'},
+      {icon: 'ai-heart', title: 'People-first service', text: 'Expect responsive partners who keep you updated and cheering alongside you.'}
+    ].each do |feature| %>
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body p-4">
+            <div class="icon-circle bg-primary bg-opacity-10 text-primary mb-3">
+              <i class="<%= feature[:icon] %>"></i>
+            </div>
+            <h3 class="h5"><%= feature[:title] %></h3>
+            <p class="text-muted mb-0"><%= feature[:text] %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<section class="bg-secondary py-5">
+  <div class="container py-lg-4 py-xl-5">
+    <div class="row align-items-center mb-4">
+      <div class="col-lg-8">
+        <h2 class="display-6 mb-2">Client feedback</h2>
+        <p class="text-muted mb-0">Real words from dance teams, fitness studios, creators, and corporate crews.</p>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <%= link_to 'Need merch support?', new_inquiry_path, class: 'btn btn-outline-primary' %>
+      </div>
+    </div>
+
+    <% if @reviews.present? %>
+      <div class="row g-4">
+        <% @reviews.each do |review| %>
+          <div class="col-md-6">
+            <article class="card h-100 border-0 shadow-sm">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h3 class="h5 mb-0"><%= review.name %></h3>
+                  <span class="badge bg-primary bg-opacity-10 text-primary">⭐ <%= review.rating %></span>
+                </div>
+                <p class="text-muted mb-0"><%= review.content %></p>
+              </div>
+            </article>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-5 text-center">
+          <h3 class="h5 mb-3">Be the first to share a testimonial</h3>
+          <p class="text-muted mb-4">We love hearing how custom gear helped your event or launch shine.</p>
+          <%= link_to 'Submit a review', new_review_path, class: 'btn btn-primary' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<section class="container py-5 py-lg-6">
+  <div class="row align-items-center gy-4">
+    <div class="col-lg-6">
+      <%= image_tag 'theme/services/v1/01.jpg', class: 'rounded-4 w-100 shadow-sm', alt: 'Queens of Bling creative session' %>
+    </div>
+    <div class="col-lg-6">
+      <h2 class="display-5 mb-3">Let’s build your next look</h2>
+      <p class="fs-lg text-muted">Whether you are planning a national tour or outfitting your first pop-up, we collaborate with your team to nail the vision, budget, and timeline.</p>
+      <ul class="list-unstyled mb-4">
+        <% [
+          'Dedicated merch concierge from kickoff to delivery',
+          'In-house embellishment and quality control',
+          'Flexible order sizes and fulfillment options'
+        ].each do |line| %>
+          <li class="d-flex mb-2"><i class="ai-check-alt text-primary me-2"></i><span><%= line %></span></li>
+        <% end %>
+      </ul>
+      <%= link_to 'Book a consultation', new_inquiry_path, class: 'btn btn-primary btn-lg' %>
+    </div>
+  </div>
+</section>

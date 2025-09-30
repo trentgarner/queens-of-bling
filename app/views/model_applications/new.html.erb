@@ -1,22 +1,78 @@
-<div class="container mt-5">
-  <h1>Apply to Model Apparel</h1>
-  <%= form_with model: @model_application, local: true do |f| %>
-    <div class="mb-3">
-      <%= f.label :name %>
-      <%= f.text_field :name, class: "form-control" %>
+<% content_for :title, "Model Application" %>
+
+<section class="bg-dark position-relative py-5">
+  <div class="d-none d-dark-mode-block position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(255,255,255, .02);"></div>
+  <div class="container position-relative zindex-2 py-5">
+    <div class="row align-items-end">
+      <div class="col-lg-8">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-3 text-light">
+            <li class="breadcrumb-item"><%= link_to "Home", root_path, class: 'text-decoration-none' %></li>
+            <li class="breadcrumb-item active" aria-current="page">Model application</li>
+          </ol>
+        </nav>
+        <h1 class="display-4 text-white">Join the Queens of Bling roster</h1>
+        <p class="fs-lg text-white-50 mb-4">We collaborate with diverse models, performers, and creators for lookbooks, tours, and launch events.</p>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <%= link_to 'Ask a question', new_inquiry_path, class: 'btn btn-lg btn-outline-light' %>
+      </div>
     </div>
-    <div class="mb-3">
-      <%= f.label :email %>
-      <%= f.email_field :email, class: "form-control" %>
+  </div>
+</section>
+
+<section class="py-5 py-lg-6">
+  <div class="container py-3 py-lg-5">
+    <div class="row g-5 align-items-start">
+      <div class="col-lg-7">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4 p-lg-5">
+            <h2 class="h3 mb-4">Tell us about yourself</h2>
+            <%= form_with model: @model_application, local: true, html: { class: 'row g-4 needs-validation', novalidate: true } do |f| %>
+              <div class="col-md-6">
+                <%= f.label :name, class: 'form-label fs-base' %>
+                <%= f.text_field :name, class: 'form-control form-control-lg', required: true, placeholder: 'Your full name' %>
+              </div>
+              <div class="col-md-6">
+                <%= f.label :email, class: 'form-label fs-base' %>
+                <%= f.email_field :email, class: 'form-control form-control-lg', required: true, placeholder: 'you@example.com' %>
+              </div>
+              <div class="col-md-6">
+                <%= f.label :phone, class: 'form-label fs-base' %>
+                <%= f.telephone_field :phone, class: 'form-control form-control-lg', placeholder: '(555) 123-4567' %>
+              </div>
+              <div class="col-md-6">
+                <%= f.label :address, class: 'form-label fs-base' %>
+                <%= f.text_field :address, class: 'form-control form-control-lg', placeholder: 'City, State' %>
+              </div>
+              <div class="col-12 pt-2">
+                <%= f.submit 'Submit application', class: 'btn btn-lg btn-primary' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="ps-lg-4">
+          <h2 class="h3 mb-4">What we’re looking for</h2>
+          <ul class="list-unstyled mb-4">
+            <% [
+              'Confidence in front of the camera and on stage',
+              'Comfortable working with stylists and choreographers',
+              'Availability for fittings (virtual or in-person)',
+              'Passion for uplifting brands and community events'
+            ].each do |item| %>
+              <li class="d-flex mb-3"><i class="ai-check-alt text-primary me-2"></i><span><%= item %></span></li>
+            <% end %>
+          </ul>
+          <div class="card border-0 bg-secondary">
+            <div class="card-body p-4">
+              <h3 class="h5 mb-3">Questions?</h3>
+              <p class="text-muted mb-0">Email <%= mail_to 'talent@queensofbling.com' %> or call <a class="nav-link d-inline p-0" href="tel:+17205551234">+1 (720) 555-1234</a>. We can’t wait to collaborate.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="mb-3">
-      <%= f.label :phone %>
-      <%= f.telephone_field :phone, class: "form-control" %>
-    </div>
-    <div class="mb-3">
-      <%= f.label :address %>
-      <%= f.text_field :address, class: "form-control" %>
-    </div>
-    <%= f.submit "Submit", class: "btn btn-primary" %>
-  <% end %>
-</div>
+  </div>
+</section>

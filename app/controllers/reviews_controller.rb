@@ -13,9 +13,9 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def index
-    @reviews = Review.all
-  end
+  # def index
+  #   @reviews = Review.all
+  # end
 
   def testimonials
     @reviews = Review.where(approved: true)

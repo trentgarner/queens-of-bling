@@ -1,3 +1,76 @@
-<div class="container mt-5">
-  <h1 class="mb-4 text-center">Gallery</h1>
-</div>
+<% content_for :title, "Portfolio" %>
+
+<section class="bg-secondary position-relative py-5">
+  <div class="container position-relative zindex-2 py-5">
+    <div class="row align-items-center gy-4">
+      <div class="col-lg-8">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-3">
+            <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+            <li class="breadcrumb-item active" aria-current="page">Portfolio</li>
+          </ol>
+        </nav>
+        <h1 class="display-4 mb-3">Recent collaborations</h1>
+        <p class="fs-lg text-muted mb-0">A curated look at campaigns, merch drops, and photo shoots we have produced for brands and creators around the country.</p>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <%= link_to 'Start a project', new_inquiry_path, class: 'btn btn-lg btn-primary' %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container py-5 py-lg-6">
+  <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+    <h2 class="h4 mb-3 mb-lg-0">Browse by focus</h2>
+    <ul class="nav nav-pills nav-fill flex-grow-1 flex-lg-grow-0 gap-2">
+      <% ['All', 'Branding', 'Merch', 'Events', 'Campaigns'].each_with_index do |filter, index| %>
+        <li class="nav-item flex-grow-1 flex-lg-grow-0">
+          <button class="nav-link <%= 'active' if index.zero? %>" type="button"><%= filter %></button>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <% projects = [
+    { image: 'theme/portfolio/list/01.jpg', category: 'Campaign', title: 'Queens Pride Capsule', description: 'Localized graphics, production, and on-site fulfillment for Pride weekend.', link: '#'},
+    { image: 'theme/portfolio/list/02.jpg', category: 'Branding', title: 'Bloom Wellness Launch', description: 'Custom rhinestone sets for the Bloom influencer team debut.', link: '#'},
+    { image: 'theme/portfolio/list/03.jpg', category: 'Events', title: 'Creator Summit', description: ' Stage décor, swag bags, and live activation uniforms.', link: '#'},
+    { image: 'theme/portfolio/list/04.jpg', category: 'Merch', title: 'Glow Barre Studio', description: 'Seasonal class merch featuring reflective foils and metallic inks.', link: '#'},
+    { image: 'theme/portfolio/list/05.jpg', category: 'Campaign', title: 'Metro Dance Crew', description: 'Uniform refresh with moisture-wicking blanks and multi-layer crystals.', link: '#'},
+    { image: 'theme/portfolio/list/06.png', category: 'Branding', title: 'Studio X Photo Kits', description: 'Backdrop styling, ready-to-ship merch, and packaging design.', link: '#'},
+    { image: 'theme/portfolio/list/07.png', category: 'Events', title: 'Sip & Sign Pop-up', description: 'Tablescape, signage, and staff apparel for an experiential launch.', link: '#'},
+    { image: 'theme/portfolio/list/08.png', category: 'Merch', title: 'Run Club Capsules', description: 'Limited run drop with custom typography and reflective hits.', link: '#'},
+    { image: 'theme/portfolio/list/09.png', category: 'Campaign', title: 'Glow Up Tour', description: 'Roadshow uniforms, crew gifts, and booth merchandising.', link: '#'},
+    { image: 'theme/portfolio/list/10.png', category: 'Branding', title: 'The Market Collective', description: 'Identity refresh with custom tees, crewnecks, and totes.', link: '#'}
+  ] %>
+
+  <div class="row g-4">
+    <% projects.each do |project| %>
+      <div class="col-md-6">
+        <article class="card border-0 shadow-sm h-100">
+          <%= image_tag project[:image], class: 'card-img-top', alt: project[:title] %>
+          <div class="card-body p-4">
+            <span class="badge bg-primary bg-opacity-10 text-primary mb-3"><%= project[:category] %></span>
+            <h3 class="h4 mb-2"><a class="stretched-link text-decoration-none" href="<%= project[:link] %>"><%= project[:title] %></a></h3>
+            <p class="text-muted mb-0"><%= project[:description] %></p>
+          </div>
+        </article>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<section class="bg-dark text-light py-5">
+  <div class="container py-lg-4 py-xl-5">
+    <div class="row align-items-center gy-4">
+      <div class="col-lg-7">
+        <h2 class="display-5 mb-3">Need creative production support?</h2>
+        <p class="fs-lg mb-0 opacity-75">From concept to delivery, we handle sourcing, embellishment, and logistics so your team can stay focused on the story you want to tell.</p>
+      </div>
+      <div class="col-lg-5 text-lg-end">
+        <%= link_to 'Book a discovery call', new_inquiry_path, class: 'btn btn-lg btn-outline-light' %>
+      </div>
+    </div>
+  </div>
+</section>

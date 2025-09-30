@@ -183,9 +183,15 @@
         init();
       })();
     </script>
+    <script>
+      document.addEventListener('turbo:load', function () {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+      });
+    </script>
   </head>
 
   <body>
+    <div id="top"></div>
     <%= render "shared/navbar" %>
 
     <%= yield %>
