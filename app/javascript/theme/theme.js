@@ -20,27 +20,37 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
    * Theme Mode Switch
    * Switch betwen light/dark mode. The chosen mode is saved to browser's local storage
   */
-  var themeModeSwitch = function () {
+  var initThemeModeSwitch = function initThemeModeSwitch() {
     var modeSwitch = document.querySelector('[data-bs-toggle="mode"]');
-    if (modeSwitch === null) return;
+    if (modeSwitch === null || modeSwitch.dataset.modeInitialized === 'true') return;
+    modeSwitch.dataset.modeInitialized = 'true';
     var checkbox = modeSwitch.querySelector('.form-check-input');
-    if (mode === 'dark') {
-      root.classList.add('dark-mode');
-      checkbox.checked = true;
-    } else {
-      root.classList.remove('dark-mode');
-      checkbox.checked = false;
-    }
-    modeSwitch.addEventListener('click', function (e) {
-      if (checkbox.checked) {
+    var root = document.documentElement;
+    var applyMode = function applyMode(nextMode) {
+      if (nextMode === 'dark') {
         root.classList.add('dark-mode');
+        checkbox.checked = true;
         window.localStorage.setItem('mode', 'dark');
       } else {
         root.classList.remove('dark-mode');
+        checkbox.checked = false;
         window.localStorage.setItem('mode', 'light');
       }
+    };
+    var storedMode = window.localStorage.getItem('mode');
+    if (storedMode === 'dark' || storedMode === 'light') {
+      applyMode(storedMode);
+    } else {
+      applyMode(root.classList.contains('dark-mode') ? 'dark' : 'light');
+    }
+    checkbox.addEventListener('change', function () {
+      applyMode(checkbox.checked ? 'dark' : 'light');
     });
-  }();
+  };
+
+  document.addEventListener('turbo:load', initThemeModeSwitch);
+  document.addEventListener('DOMContentLoaded', initThemeModeSwitch);
+  initThemeModeSwitch();
 
   /**
    * Add solid background to fixed to top navigation bar

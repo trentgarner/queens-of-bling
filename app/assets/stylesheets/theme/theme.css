@@ -11894,13 +11894,6 @@ button:focus {
     margin-left: auto;
   }
 }
-@font-face {
-  font-family: "around-icons";
-  src: url("../../../fonts/theme/theme/around-icons.ttf?den6mh") format("truetype"), url("../../../fonts/theme/theme/around-icons.woff?den6mh") format("woff"), url("../../../fonts/theme/theme/around-icons.svg?den6mh#around-icons") format("svg");
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-}
 [class^=ai-], [class*=" ai-"],
 [class^=bi-], [class*=" bi-"] {
   display: inline-block;
