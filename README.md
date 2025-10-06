@@ -88,19 +88,6 @@ $ RAILS_ENV=production bundle exec rails assets:precompile
 
 The compiled files live under `public/assets` and are served directly by Nginx with long-term caching.
 
-
-### Updating the server
-
-```bash
-ssh rails@138.68.46.116
-cd ~/www/app
-git pull origin main
-yarn install --frozen-lockfile
-RAILS_ENV=production bundle exec rails db:migrate
-RAILS_ENV=production bundle exec rails assets:precompile
-sudo systemctl restart rails
-```
-
 ## Project Structure Highlights
 
 ```
