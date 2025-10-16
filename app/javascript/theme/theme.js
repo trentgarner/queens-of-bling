@@ -27,15 +27,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     var checkbox = modeSwitch.querySelector('.form-check-input');
     var root = document.documentElement;
     var applyMode = function applyMode(nextMode) {
-      if (nextMode === 'dark') {
-        root.classList.add('dark-mode');
-        checkbox.checked = true;
-        window.localStorage.setItem('mode', 'dark');
-      } else {
-        root.classList.remove('dark-mode');
-        checkbox.checked = false;
-        window.localStorage.setItem('mode', 'light');
-      }
+      var isDark = nextMode === 'dark';
+      var themeValue = isDark ? 'dark' : 'light';
+      root.classList.toggle('dark-mode', isDark);
+      root.setAttribute('data-theme', themeValue);
+      root.setAttribute('data-coreui-theme', themeValue);
+      checkbox.checked = isDark;
+      window.localStorage.setItem('mode', themeValue);
     };
     var storedMode = window.localStorage.getItem('mode');
     if (storedMode === 'dark' || storedMode === 'light') {
@@ -48,9 +46,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     });
   };
 
-  document.addEventListener('turbo:load', initThemeModeSwitch);
-  document.addEventListener('DOMContentLoaded', initThemeModeSwitch);
-  initThemeModeSwitch();
+  const init = () => { initThemeModeSwitch(); };
+  document.addEventListener('turbo:load', init);
+  document.addEventListener('DOMContentLoaded', init);
+  init();
 
   /**
    * Add solid background to fixed to top navigation bar

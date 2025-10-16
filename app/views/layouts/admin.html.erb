@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" data-coreui-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= content_for?(:title) ? yield(:title) : "Admin · Kidd Custom Apparel" %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
+    <%= yield :styles %>
+  </head>
+  <body>
+    <div class="sidebar sidebar-dark sidebar-fixed border-end" id="sidebar">
+      <%= render "admins/shared/sidebar" %>
+    </div>
+    <div class="wrapper d-flex flex-column min-vh-100 bg-body">
+      <%= render "admins/shared/header" %>
+      <div class="body flex-grow-1 px-3">
+        <div class="container-lg">
+          <% if notice.present? %>
+            <p class="alert alert-info alert-dismissible fade show" role="alert">
+              <%= notice %>
+              <button type="button" class="btn-close" data-coreui-dismiss="alert" aria-label="Close"></button>
+            </p>
+          <% end %>
+          <% if alert.present? %>
+            <p class="alert alert-danger alert-dismissible fade show" role="alert">
+              <%= alert %>
+              <button type="button" class="btn-close" data-coreui-dismiss="alert" aria-label="Close"></button>
+            </p>
+          <% end %>
+
+          <%= yield %>
+        </div>
+      </div>
+      <%= render "admins/shared/footer" %>
+    </div>
+
+        <script>
+      (function () {
+        const mode = window.localStorage.getItem('mode');
+        const root = document.documentElement;
+        const isDark = mode === 'dark';
+        const themeValue = isDark ? 'dark' : 'light';
+        root.classList.toggle('dark-mode', isDark);
+        root.setAttribute('data-theme', themeValue);
+        root.setAttribute('data-coreui-theme', themeValue);
+      })();
+    </script>
+
+    <%= javascript_include_tag "admin", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <%= yield :scripts %>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll('[data-coreui-toggle="dropdown"]').forEach((dropdownToggleEl) => {
+          coreui.Dropdown.getOrCreateInstance(dropdownToggleEl);
+        });
+
+        const sidebarToggle = document.querySelector('[data-coreui-toggle="sidebar"]');
+        if (sidebarToggle) {
+          sidebarToggle.addEventListener('click', () => {
+            const sidebar = document.querySelector('#sidebar');
+            if (sidebar) {
+              coreui.Sidebar.getOrCreateInstance(sidebar).toggle();
+            }
+          });
+        }
+
+        const chartFactory = (selector, config) => {
+          const canvas = document.getElementById(selector);
+          if (!canvas || !window.Chart || !window.coreui) return null;
+          return new Chart(canvas, config);
+        };
+
+        chartFactory('card-chart1', {
+          type: 'line',
+          data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+            datasets: [{
+              backgroundColor: 'transparent',
+              borderColor: 'rgba(255,255,255,.55)',
+              pointBackgroundColor: coreui.Utils.getStyle('--cui-primary'),
+              data: [65, 59, 84, 84, 51, 55, 40]
+            }]
+          },
+          options: {
+            plugins: { legend: { display: false } },
+            maintainAspectRatio: false,
+            scales: {
+              x: { display: false, grid: { display: false } },
+              y: { display: false, grid: { display: false } }
+            },
+            elements: { line: { borderWidth: 1, tension: 0.4 }, point: { radius: 4 } }
+          }
+        });
+
+        chartFactory('card-chart2', {
+          type: 'line',
+          data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+            datasets: [{
+              backgroundColor: 'transparent',
+              borderColor: 'rgba(255,255,255,.55)',
+              pointBackgroundColor: coreui.Utils.getStyle('--cui-info'),
+              data: [12, 18, 9, 17, 34, 22, 11]
+            }]
+          },
+          options: {
+            plugins: { legend: { display: false } },
+            maintainAspectRatio: false,
+            scales: {
+              x: { display: false, grid: { display: false } },
+              y: { display: false, grid: { display: false } }
+            },
+            elements: { line: { borderWidth: 1 }, point: { radius: 4 } }
+          }
+        });
+
+        chartFactory('card-chart3', {
+          type: 'line',
+          data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+            datasets: [{
+              label: 'Completed jobs',
+              backgroundColor: coreui.Utils.hexToRgba(coreui.Utils.getStyle('--cui-success'), 20),
+              borderColor: 'rgba(255,255,255,.55)',
+              data: [78, 81, 80, 45, 34, 65, 90],
+              fill: true
+            }]
+          },
+          options: {
+            plugins: { legend: { display: false } },
+            maintainAspectRatio: false,
+            scales: {
+              x: { display: false },
+              y: { display: false }
+            },
+            elements: { line: { borderWidth: 2, tension: 0.4 }, point: { radius: 0 } }
+          }
+        });
+
+        chartFactory('card-chart4', {
+          type: 'bar',
+          data: {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            datasets: [{
+              label: 'Active creators',
+              backgroundColor: coreui.Utils.getStyle('--cui-primary'),
+              borderColor: 'transparent',
+              data: [12, 17, 11, 15, 20, 22, 18]
+            }]
+          },
+          options: {
+            plugins: { legend: { display: false } },
+            maintainAspectRatio: false,
+            scales: {
+              x: { display: false, grid: { display: false } },
+              y: { display: false, grid: { display: false } }
+            }
+          }
+        });
+
+        chartFactory('main-chart', {
+          type: 'line',
+          data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+            datasets: [{
+              label: 'New inquiries',
+              backgroundColor: coreui.Utils.hexToRgba(coreui.Utils.getStyle('--cui-primary'), 10),
+              borderColor: coreui.Utils.getStyle('--cui-primary'),
+              pointHoverBackgroundColor: '#fff',
+              borderWidth: 2,
+              data: [50, 65, 70, 81, 56, 55, 40, 64],
+              fill: true
+            }]
+          },
+          options: {
+            plugins: { legend: { display: false } },
+            maintainAspectRatio: false,
+            scales: {
+              x: {
+                grid: { color: coreui.Utils.getStyle('--cui-border-color-translucent') },
+                ticks: { color: coreui.Utils.getStyle('--cui-body-color') }
+              },
+              y: {
+                beginAtZero: true,
+                grid: { color: coreui.Utils.getStyle('--cui-border-color-translucent') },
+                ticks: { color: coreui.Utils.getStyle('--cui-body-color') }
+              }
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admins, path: "admin", path_names: { sign_in: "login", sign_out: "logout" }
+
   get "reviews/new"
   get "reviews/create"
   get "reviews/index"
@@ -28,4 +30,10 @@ Rails.application.routes.draw do
   resources :model_applications, only: [ :new, :create ]
   resources :inquiries, only: [ :new, :create ]
   resources :reviews, only: [ :new, :create, :index ]
+
+
+  namespace :admin, path: "admin", module: "admins" do
+    root "dashboard#index"
+    get "logout", to: redirect("/", status: 302)
+  end
 end

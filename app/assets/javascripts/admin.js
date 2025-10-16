@@ -1,0 +1,10 @@
+//= require coreui/js/coreui.bundle.min
+//= require simplebar/js/simplebar.min
+//= require chartjs/js/chart.umd
+//= require chartjs/js/coreui-chartjs
+//= require utils/js/index
+//= require admin/coreui/config
+//= require admin/coreui/color-modes
+//= require admin/coreui/charts
+//= require admin/coreui/widgets
+//= require admin/coreui/main

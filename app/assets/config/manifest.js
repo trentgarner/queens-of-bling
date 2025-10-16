@@ -3,3 +3,5 @@
 //= link_tree ../../../vendor/javascript .js
 //= link_tree ../builds
 //= link theme_fonts.css
+//= link admin.css
+//= link admin.js

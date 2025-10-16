@@ -1,0 +1,53 @@
+<div class="sidebar-header border-bottom">
+  <div class="sidebar-brand">
+    <span class="fw-bold text-uppercase">Kidd Admin</span>
+  </div>
+  <button class="btn-close d-lg-none" type="button" data-coreui-theme="dark" aria-label="Close" onclick="coreui.Sidebar.getOrCreateInstance(document.querySelector('#sidebar')).toggle()"></button>
+</div>
+<ul class="sidebar-nav" data-coreui="navigation" data-simplebar>
+  <li class="nav-item">
+    <%= link_to admin_root_path, class: "nav-link #{'active' if current_page?(admin_root_path)}" do %>
+      <svg class="nav-icon">
+        <use xlink:href="https://cdn.jsdelivr.net/npm/@coreui/icons@3.0.0/sprites/free.svg#cil-speedometer"></use>
+      </svg>
+      Dashboard
+    <% end %>
+  </li>
+  <li class="nav-title">Engagement</li>
+  <li class="nav-item">
+    <%= link_to new_inquiry_path, class: "nav-link" do %>
+      <svg class="nav-icon">
+        <use xlink:href="https://cdn.jsdelivr.net/npm/@coreui/icons@3.0.0/sprites/free.svg#cil-envelope-open"></use>
+      </svg>
+      Inquiries
+    <% end %>
+  </li>
+  <li class="nav-item">
+    <%= link_to reviews_path, class: "nav-link" do %>
+      <svg class="nav-icon">
+        <use xlink:href="https://cdn.jsdelivr.net/npm/@coreui/icons@3.0.0/sprites/free.svg#cil-comment-bubble"></use>
+      </svg>
+      Testimonials
+    <% end %>
+  </li>
+  <li class="nav-item">
+    <%= link_to new_model_application_path, class: "nav-link" do %>
+      <svg class="nav-icon">
+        <use xlink:href="https://cdn.jsdelivr.net/npm/@coreui/icons@3.0.0/sprites/free.svg#cil-people"></use>
+      </svg>
+      Model roster
+    <% end %>
+  </li>
+</ul>
+<div class="sidebar-footer border-top small text-muted px-3 py-2">
+  <div>Last deploy</div>
+  <div class="fw-semibold"><%= Time.current.strftime("%b %d, %Y") %></div>
+</div>
+<div class="px-3 py-3 border-top">
+  <%= link_to destroy_admin_session_path, data: { turbo_method: :delete }, class: "btn btn-outline-light w-100 d-flex align-items-center justify-content-center gap-2" do %>
+    <svg class="icon">
+      <use xlink:href="https://cdn.jsdelivr.net/npm/@coreui/icons@3.0.0/sprites/free.svg#cil-account-logout"></use>
+    </svg>
+    Sign out
+  <% end %>
+</div>

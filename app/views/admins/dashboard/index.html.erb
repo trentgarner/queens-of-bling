@@ -1,0 +1,169 @@
+<% content_for :title, "Dashboard · Kidd Custom Apparel" %>
+
+<div class="row g-4 mb-4">
+  <div class="col-sm-6 col-xl-3">
+    <div class="card bg-primary text-white shadow-sm">
+      <div class="card-body pb-0 d-flex align-items-start">
+        <div>
+          <div class="fs-4 fw-semibold">128 <span class="fs-6 fw-normal opacity-75">new</span></div>
+          <div class="text-white-50 small text-uppercase">Inquiries</div>
+        </div>
+        <svg class="icon icon-3xl ms-auto">
+          <use xlink:href="https://cdn.jsdelivr.net/npm/@coreui/icons@3.0.0/sprites/free.svg#cil-envelope-open"></use>
+        </svg>
+      </div>
+      <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+        <canvas class="chart" id="card-chart1" height="70"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-xl-3">
+    <div class="card bg-info text-white shadow-sm">
+      <div class="card-body pb-0 d-flex align-items-start">
+        <div>
+          <div class="fs-4 fw-semibold">42 <span class="fs-6 fw-normal opacity-75">pending</span></div>
+          <div class="text-white-50 small text-uppercase">Fulfillment</div>
+        </div>
+        <svg class="icon icon-3xl ms-auto">
+          <use xlink:href="https://cdn.jsdelivr.net/npm/@coreui/icons@3.0.0/sprites/free.svg#cil-truck"></use>
+        </svg>
+      </div>
+      <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+        <canvas class="chart" id="card-chart2" height="70"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-xl-3">
+    <div class="card shadow-sm">
+      <div class="card-body pb-0">
+        <div class="fs-4 fw-semibold">18<span class="text-success ms-2 small fw-normal"><svg class="icon">
+              <use xlink:href="https://cdn.jsdelivr.net/npm/@coreui/icons@3.0.0/sprites/free.svg#cil-arrow-top"></use>
+            </svg>12%</span></div>
+        <div class="text-body-secondary small text-uppercase">Testimonials this week</div>
+      </div>
+      <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+        <canvas class="chart opacity-75" id="card-chart3" height="70"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-xl-3">
+    <div class="card shadow-sm">
+      <div class="card-body pb-0">
+        <div class="fs-4 fw-semibold">24<span class="text-danger ms-2 small fw-normal"><svg class="icon">
+              <use xlink:href="https://cdn.jsdelivr.net/npm/@coreui/icons@3.0.0/sprites/free.svg#cil-arrow-bottom"></use>
+            </svg>4%</span></div>
+        <div class="text-body-secondary small text-uppercase">Open model requests</div>
+      </div>
+      <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+        <canvas class="chart opacity-75" id="card-chart4" height="70"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-4 shadow-sm">
+  <div class="card-header">
+    <div class="d-flex align-items-center">
+      <svg class="icon icon-lg text-primary me-2">
+        <use xlink:href="https://cdn.jsdelivr.net/npm/@coreui/icons@3.0.0/sprites/free.svg#cil-graph"></use>
+      </svg>
+      Inquiry volume (last 8 months)
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="chart-wrapper" style="height:300px;">
+      <canvas class="chart" id="main-chart" height="300"></canvas>
+    </div>
+  </div>
+</div>
+
+<div class="row g-4">
+  <div class="col-lg-6">
+    <div class="card shadow-sm h-100">
+      <div class="card-header d-flex align-items-center justify-content-between">
+        <span>Newest inquiries</span>
+        <%= link_to "View all", new_inquiry_path, class: "btn btn-sm btn-outline-primary" %>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table align-middle mb-0">
+            <thead class="text-body-secondary small text-uppercase">
+              <tr>
+                <th scope="col">Client</th>
+                <th scope="col">Project</th>
+                <th scope="col">Status</th>
+                <th scope="col">Created</th>
+              </tr>
+            </thead>
+            <tbody class="small">
+              <tr>
+                <td>Denver Crush Cheer</td>
+                <td>Competition jackets</td>
+                <td><span class="badge text-bg-info">Needs review</span></td>
+                <td>2 hours ago</td>
+              </tr>
+              <tr>
+                <td>Harper Events</td>
+                <td>VIP influencer boxes</td>
+                <td><span class="badge text-bg-success">Scheduled</span></td>
+                <td>Yesterday</td>
+              </tr>
+              <tr>
+                <td>Elevate Dance</td>
+                <td>Tour merch redesign</td>
+                <td><span class="badge text-bg-warning">Waiting on assets</span></td>
+                <td>2 days ago</td>
+              </tr>
+              <tr>
+                <td>Nightfall Productions</td>
+                <td>Glow-line uniforms</td>
+                <td><span class="badge text-bg-secondary">Archived</span></td>
+                <td>4 days ago</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card shadow-sm h-100">
+      <div class="card-header d-flex align-items-center justify-content-between">
+        <span>Upcoming deliverables</span>
+        <span class="text-body-secondary small">Next 10 days</span>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item px-3 d-flex align-items-center justify-content-between">
+            <div>
+              <div class="fw-semibold">Studio Essentials kit</div>
+              <div class="text-body-secondary small">Final QC · 3 garment lines</div>
+            </div>
+            <span class="badge text-bg-primary">Due in 2 days</span>
+          </li>
+          <li class="list-group-item px-3 d-flex align-items-center justify-content-between">
+            <div>
+              <div class="fw-semibold">Glow tour bomber</div>
+              <div class="text-body-secondary small">Packaging + shipment coordination</div>
+            </div>
+            <span class="badge text-bg-warning">Due in 5 days</span>
+          </li>
+          <li class="list-group-item px-3 d-flex align-items-center justify-content-between">
+            <div>
+              <div class="fw-semibold">Influencer launch bundle</div>
+              <div class="text-body-secondary small">Stop motion shoot + social toolkit</div>
+            </div>
+            <span class="badge text-bg-success">Due in 7 days</span>
+          </li>
+          <li class="list-group-item px-3 d-flex align-items-center justify-content-between">
+            <div>
+              <div class="fw-semibold">Merch table showstopper</div>
+              <div class="text-body-secondary small">Event pack-in & volunteer briefing</div>
+            </div>
+            <span class="badge text-bg-secondary">Due in 9 days</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

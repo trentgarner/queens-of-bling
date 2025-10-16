@@ -23,15 +23,15 @@
     <meta name="theme-color" content="white">
     <!-- Theme mode-->
     <script>
-      let mode = window.localStorage.getItem('mode'),
-          root = document.getElementsByTagName('html')[0];
-      if (mode !== undefined && mode === 'dark') {
-        root.classList.add('dark-mode');
-      } else {
-        root.classList.remove('dark-mode');
-      }
-      
-      
+      (function () {
+        const mode = window.localStorage.getItem('mode');
+        const root = document.documentElement;
+        const isDark = mode === 'dark';
+        const themeValue = isDark ? 'dark' : 'light';
+        root.classList.toggle('dark-mode', isDark);
+        root.setAttribute('data-theme', themeValue);
+        root.setAttribute('data-coreui-theme', themeValue);
+      })();
     </script>
     <!-- Page loading styles-->
     <style>
@@ -190,14 +190,22 @@
     </script>
   </head>
 
-  <body>
-    <div id="top"></div>
+    <body>
     <%= render "shared/navbar" %>
+
+    <% if notice.present? %>
+      <p class="alert alert-info mb-0"><%= notice %></p>
+    <% end %>
+
+    <% if alert.present? %>
+      <p class="alert alert-danger mb-0"><%= alert %></p>
+    <% end %>
 
     <%= yield %>
 
     <%= render "shared/footer" %>
   </body>
+
 </html>
 
 
