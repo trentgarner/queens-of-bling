@@ -148,8 +148,8 @@
     <link rel="apple-touch-icon" href="<%= asset_path('theme/favicon/apple-touch-icon.png') %>">
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
     <%= javascript_include_tag "theme/vendor_bundle", defer: true %>
+    <%= javascript_importmap_tags %>
     <script>
       (function () {
         const root = document.documentElement;
