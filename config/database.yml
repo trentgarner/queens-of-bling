@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: queens_of_bling_production
-  username: queens_of_bling
-  password: <%= ENV["QUEENS_OF_BLING_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
