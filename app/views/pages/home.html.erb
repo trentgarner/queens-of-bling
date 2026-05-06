@@ -136,19 +136,20 @@
 <%# Hero section %>
 <section>
   <div class="jarallax bg-dark min-vh-100 py-5" data-jarallax data-type="scroll-opacity" data-speed="0.7">
-    <div class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-40"></div>
-    <div class="jarallax-img" style="background-image: url(<%= asset_path('theme/landing/shop/hero/bg.jpg') %>);"></div>
+    <div class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-60"></div>
+    <div class="jarallax-img" style="background-image: url(<%= asset_path('theme/kiddcustomwebsitephotos/IMG_7486.jpg') %>);"></div>
     <div class="container position-relative zindex-5 py-sm-4 py-lg-5 mt-4">
       <div class="row pt-lg-2 py-xl-4 py-xxl-5 mb-md-4 mb-lg-5">
         <div class="col-md-10 col-lg-9 col-xl-8 col-xxl-7 pt-5 mb-5">
           <h1 class="display-2 text-light text-uppercase pb-sm-2 pb-md-3">Custom Rhinestone Apparel for teams that want to shine</h1>
           <p class="text-light opacity-75 pb-3 pb-md-4 mb-3" style="max-width: 560px;">Kidd Custom Apparel provides custom rhinestone uniforms, leotards, bows, warm ups, bags, and more.</p>
           <div class="d-flex flex-wrap gap-3">
-            <%= link_to 'Start a project', new_inquiry_path, class: 'btn btn-light text-dark' %>
+            <%= link_to 'Start a project', new_inquiry_path, class: 'btn btn-light', style: 'color: #000 !important;' %>
             <%= link_to 'View our portfolio', gallery_path, class: 'btn btn-outline-light' %>
           </div>
         </div>
       </div>
+<% if false # Signature drops %>
       <div class="d-flex align-items-center justify-content-between mb-3">
         <div class="fw-medium text-light text-uppercase">Signature drops</div>
         <div class="d-flex">
@@ -181,6 +182,7 @@
           <% end %>
         </div>
       </div>
+<% end %>
     </div>
   </div>
 </section>
@@ -204,7 +206,7 @@
       <div class="card zoom-effect h-100 border-0 rounded-1 overflow-hidden" style="min-height: 320px;">
         <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-10 zindex-2"></span>
         <div class="zoom-effect-wrapper rounded-1 position-absolute top-0 start-0 w-100 h-100">
-          <div class="zoom-effect-img bg-size-cover bg-position-bottom-center position-absolute top-0 start-0 w-100 h-100" style="background-image: url(<%= asset_path('theme/shop/categories/01.jpg') %>);"></div>
+          <div class="zoom-effect-img bg-size-cover bg-position-bottom-center position-absolute top-0 start-0 w-100 h-100" style="background-image: url(<%= asset_path('theme/kiddcustomwebsitephotos/IMG_2895.jpeg') %>);"></div>
         </div>
         <a class="card-body d-flex flex-column justify-content-end align-items-start position-absolute top-0 start-0 w-100 h-100 text-decoration-none zindex-3" href="<%= new_inquiry_path %>">
           <span class="bg-light text-dark rounded-pill fs-sm fw-semibold lh-1 py-3 px-4">Leotards</span>
@@ -214,15 +216,15 @@
     <div class="col-md-8">
       <div class="card zoom-effect border-0 rounded-1 overflow-hidden">
         <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-10 zindex-2"></span>
-        <div class="zoom-effect-wrapper rounded-1"><%= image_tag 'theme/shop/categories/02.jpg', alt: 'Category image', class: 'zoom-effect-img' %></div>
+        <div class="zoom-effect-wrapper rounded-1"><%= image_tag 'theme/kiddcustomwebsitephotos/IMG_7574.jpeg', alt: 'Category image', class: 'zoom-effect-img' %></div>
         <a class="card-body d-flex flex-column justify-content-end align-items-start position-absolute top-0 start-0 w-100 h-100 text-decoration-none zindex-3" href="<%= gallery_path %>">
           <span class="bg-light text-dark rounded-pill fs-sm fw-semibold lh-1 py-3 px-4">Bows</span>
         </a>
       </div>
       <div class="row g-4 pt-4">
         <% [
-          {image: 'theme/shop/categories/03.jpg', label: 'Sports Bras'},
-          {image: 'theme/shop/categories/04.jpg', label: 'Team Gear'}
+          {image: 'theme/kiddcustomwebsitephotos/IMG_7485.jpg', label: 'Sports Bras'},
+          {image: 'theme/kiddcustomwebsitephotos/IMG_5494.jpeg', label: 'Team Gear'}
         ].each do |category| %>
           <div class="col-sm-6">
             <div class="card zoom-effect border-0 rounded-1 overflow-hidden">
@@ -239,6 +241,7 @@
   </div>
 </section>
 
+<% if false # Trending products, Collections, Features %>
 <%# Trending products %>
 <section class="container pb-5 mb-lg-3 mb-xl-4 mb-xxl-5">
   <div class="d-flex align-items-center justify-content-between pb-4 mb-2 mb-md-3">
@@ -288,8 +291,8 @@
 <%# Collections %>
 <section class="position-relative py-5">
   <div class="binded-content position-absolute top-0 start-0 w-100">
-    <div class="binded-item position-absolute top-0 start-0 w-100 h-100 bg-size-cover bg-position-center active" id="bg-1" style="background: linear-gradient(270deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%), url(<%= asset_path('theme/landing/shop/collections/bg01.jpg') %>);"></div>
-    <div class="binded-item position-absolute top-0 start-0 w-100 h-100 bg-size-cover bg-position-center" id="bg-2" style="background-image: linear-gradient(90deg, rgba(0,0,0,0.5) -0.47%, rgba(0,0,0,0) 100%), url(<%= asset_path('theme/landing/shop/collections/bg02.jpg') %>);"></div>
+    <div class="binded-item position-absolute top-0 start-0 w-100 h-100 bg-size-cover bg-position-center active" id="bg-1" style="background: linear-gradient(270deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%), url(<%= asset_path('theme/kiddcustomwebsitephotos/IMG_7459.jpeg') %>);"></div>
+    <div class="binded-item position-absolute top-0 start-0 w-100 h-100 bg-size-cover bg-position-center" id="bg-2" style="background-image: linear-gradient(90deg, rgba(0,0,0,0.5) -0.47%, rgba(0,0,0,0) 100%), url(<%= asset_path('theme/kiddcustomwebsitephotos/IMG_6363.jpg') %>);"></div>
   </div>
   <div class="container py-2 py-sm-4 py-lg-5 my-md-3 my-lg-0 my-xl-3 my-xxl-4">
     <div class="row align-items-center my-xxl-2">
@@ -367,26 +370,28 @@
     <div class="swiper-pagination position-relative bottom-0 pt-1 mt-4 d-lg-none"></div>
   </div>
 </section>
+<% end %>
 
 <%# Gallery %>
 <section class="container pb-5 mb-lg-4 mb-xl-5">
-  <h2 class="h1 pb-3 mb-lg-4">Ideas for your home</h2>
+  <h2 class="h1 pb-3 mb-lg-4">From the studio</h2>
   <div class="row pb-2 pb-sm-3 pb-md-4 mb-xxl-2 g-4">
     <div class="col-md-6">
       <div class="hotspots hotspots-alt">
-        <%= image_tag 'theme/landing/shop/gallery/01.jpg', alt: 'Image', class: 'd-block rounded-1' %>
+        <%= image_tag 'theme/kiddcustomwebsitephotos/IMG_7450.jpeg', alt: 'Custom rhinestone leotard', class: 'd-block rounded-1 w-100' %>
       </div>
     </div>
     <div class="col-sm-6 col-md-3">
-      <%= image_tag 'theme/landing/shop/gallery/02.jpg', alt: 'Image', class: 'd-block rounded-1 mb-4' %>
-      <%= image_tag 'theme/landing/shop/gallery/03.jpg', alt: 'Image', class: 'rounded-1' %>
+      <%= image_tag 'theme/kiddcustomwebsitephotos/IMG_6176.jpeg', alt: 'Custom cheer hoodie', class: 'd-block rounded-1 mb-4 w-100' %>
+      <%= image_tag 'theme/kiddcustomwebsitephotos/IMG_3999.jpeg', alt: 'Custom rhinestone leotard', class: 'rounded-1 w-100' %>
     </div>
     <div class="col-sm-6 col-md-3">
-      <%= image_tag 'theme/landing/shop/gallery/04.jpg', alt: 'Image', class: 'rounded-1' %>
+      <%= image_tag 'theme/kiddcustomwebsitephotos/IMG_6884.jpeg', alt: 'Custom rhinestone dance bag', class: 'rounded-1 w-100' %>
     </div>
   </div>
 </section>
 
+<% if false # Discount and sales %>
 <%# Banner & Subscription %>
 <section class="container pb-5 mb-lg-4 mb-xl-5">
   <div class="row pb-2 pb-sm-3 pb-md-4 mb-xlx-1">
@@ -461,7 +466,9 @@
     </div>
   </div>
 </section>
+<% end %>
 
+<% if false # Blog %>
 <%# Blog %>
 <section class="container pb-5 mb-lg-3 mb-xl-4 mb-xxl-5">
   <h2 class="h1 pb-3 pb-md-4">Our blog</h2>
@@ -487,6 +494,7 @@
   </div>
   <div class="text-center mt-2 mb-sm-1 mt-lg-0 pt-4 pt-lg-5 pb-2 pb-md-4"><a class="btn btn-outline-primary w-100 w-sm-auto" href="#">More articles</a></div>
 </section>
+<% end %>
 
 <%# Instagram %>
 <section class="position-relative">
@@ -494,7 +502,7 @@
     <div class="row align-items-center g-3 g-lg-4 mb-3 mb-lg-4">
       <div class="col-sm-6 text-center order-sm-2">
         <div class="ai-instagram fs-2 text-primary mb-2 mb-md-3 mb-lg-4"></div>
-        <h2 class="h1 mb-2 mb-sm-0">Follow us<br><a href="#" class="text-primary text-decoration-none">#aroundecor</a></h2>
+        <h2 class="h1 mb-2 mb-sm-0">Follow us<br><a href="#" class="text-primary text-decoration-none">#kiddcustomapparel</a></h2>
       </div>
       <div class="col-6 col-sm-3 order-sm-1">
         <a class="d-block card-hover zoom-effect" href="#">
@@ -502,7 +510,7 @@
             <i class="ai-instagram lead text-white position-relative zindex-2"></i>
             <div class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-20"></div>
           </div>
-          <div class="zoom-effect-wrapper rounded-1"><%= image_tag 'theme/landing/shop/instagram/01.jpg', alt: 'Instagram image', class: 'zoom-effect-img' %></div>
+          <div class="zoom-effect-wrapper rounded-1"><%= image_tag 'theme/kiddcustomwebsitephotos/A37D817A-C772-4B1C-999E-F967E1B636F0.JPG', alt: 'Instagram image', class: 'zoom-effect-img' %></div>
         </a>
       </div>
       <div class="col-6 col-sm-3 order-sm-3">
@@ -511,14 +519,17 @@
             <i class="ai-instagram lead text-white position-relative zindex-2"></i>
             <div class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-20"></div>
           </div>
-          <div class="zoom-effect-wrapper rounded-1"><%= image_tag 'theme/landing/shop/instagram/02.jpg', alt: 'Instagram image', class: 'zoom-effect-img' %></div>
+          <div class="zoom-effect-wrapper rounded-1"><%= image_tag 'theme/kiddcustomwebsitephotos/IMG_6053.jpg', alt: 'Instagram image', class: 'zoom-effect-img' %></div>
         </a>
       </div>
     </div>
     <div class="row g-3 g-lg-4">
-      <% (3..6).each do |n|
-           filename = "theme/landing/shop/instagram/#{format('%02d', n)}.jpg"
-      %>
+      <% [
+        'theme/kiddcustomwebsitephotos/IMG_7794.jpeg',
+        'theme/kiddcustomwebsitephotos/IMG_2899.jpeg',
+        'theme/kiddcustomwebsitephotos/IMG_9516.jpeg',
+        'theme/kiddcustomwebsitephotos/IMG_7789.jpeg'
+      ].each do |filename| %>
         <div class="col-6 col-sm-3">
           <a class="d-block card-hover zoom-effect" href="#">
             <div class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-1 overflow-hidden zindex-2 opacity-0">

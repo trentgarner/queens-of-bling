@@ -10,3 +10,15 @@
 
 // Theme itself
 @import "theme/theme";
+
+// Dark mode text contrast fixes
+.dark-mode {
+  .text-muted {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  .card:not(.ignore-dark-mode) a:not(.btn):not(.badge) {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+}
